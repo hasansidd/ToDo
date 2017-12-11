@@ -1,5 +1,6 @@
 package com.siddapps.android.todo
 
+import android.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +18,12 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.add_task -> {
-                Log.i(TAG, "add task")
+                val fragment = AddTaskFragment.newFragment(10)
+                supportFragmentManager
+                        .beginTransaction()
+                        .add(R.id.fragment_container, fragment)
+                        .addToBackStack("test")
+                        .commit()
                 return true
             }
             R.id.settings -> {
