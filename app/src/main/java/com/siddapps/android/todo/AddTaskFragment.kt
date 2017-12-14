@@ -1,10 +1,10 @@
 package com.siddapps.android.todo
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.*
+import com.siddapps.android.todo.model.AppDatabase
+import com.siddapps.android.todo.ui.homepage.HomepageActivity
 
 class AddTaskFragment : Fragment() {
     var TAG = "AddTaskFragment"
@@ -22,8 +22,17 @@ class AddTaskFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu_add_task, menu)
         super.onCreateOptionsMenu(menu, inflater)
-        menu?.clear()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.add_task -> {
+                val db = AppDatabase.getInstance(HomepageActivity.this)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,14 +1,18 @@
-package com.siddapps.android.todo
+package com.siddapps.android.todo.ui.homepage
 
-import android.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.siddapps.android.todo.AddTaskFragment
+import com.siddapps.android.todo.R
+import com.siddapps.android.todo.model.Task
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-    val TAG = "MainActivity"
+class HomepageActivity : AppCompatActivity(), HomepageView {
+    private val TAG = "HomepageActivity"
+    private val presenter: HomepagePresenter = HomepagePresenterImpl()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -37,5 +41,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        presenter.setView(this)
+        presenter.getTasks()
     }
+
+    override fun displayTasks(tasks: MutableList<Task>) {
+       homepage_rv.adapter = TaskAdapter(this, tasks)
+    }
+
+
 }
