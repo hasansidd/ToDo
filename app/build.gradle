@@ -39,4 +39,6 @@ dependencies {
     compile 'com.google.dagger:dagger-android:2.13'
     compile 'com.google.dagger:dagger-android-support:2.13' // if you use the support libraries
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.13'
+
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
 }

@@ -1,14 +1,16 @@
 package com.siddapps.android.todo.ui.homepage
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import com.siddapps.android.todo.AddTaskFragment
+import android.view.*
 import com.siddapps.android.todo.R
 import com.siddapps.android.todo.model.Task
+import com.siddapps.android.todo.ui.addtask.AddTaskActivity
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class HomepageActivity : AppCompatActivity(), HomepageView {
     private val TAG = "HomepageActivity"
@@ -22,12 +24,7 @@ class HomepageActivity : AppCompatActivity(), HomepageView {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.add_task -> {
-                val fragment = AddTaskFragment.newFragment(10)
-                supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.fragment_container, fragment)
-                        .addToBackStack("test")
-                        .commit()
+                startActivity(AddTaskActivity.newIntent(this))
                 return true
             }
             R.id.settings -> {
@@ -42,12 +39,14 @@ class HomepageActivity : AppCompatActivity(), HomepageView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        task_list_rv.layoutManager = LinearLayoutManager(this)
+
         presenter.setView(this)
         presenter.getTasks()
     }
 
     override fun displayTasks(tasks: MutableList<Task>) {
-       homepage_rv.adapter = TaskAdapter(this, tasks)
+        task_list_rv.adapter = TaskAdapter(this, tasks)
     }
 
 
