@@ -8,8 +8,9 @@ import java.util.*
 @Entity(tableName = "tasks")
 data class Task(@PrimaryKey(autoGenerate = true) val id: Int,
                 var description: String,
-                var date: Long,
+                var date: Date,
                 var isComplete: Boolean = false) {
+
 
     override fun toString(): String {
         return (id.toString() + " " +

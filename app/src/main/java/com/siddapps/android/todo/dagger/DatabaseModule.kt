@@ -1,4 +1,4 @@
-package com.siddapps.android.todo.model
+package com.siddapps.android.todo.dagger
 
 import android.arch.persistence.room.Room
 import android.content.Context

@@ -32,6 +32,6 @@ package com.siddapps.android.todo.utils
 
 class Const {
   companion object {
-    const val DATABASE_NAME = "task.db"
+    const val DATABASE_NAME = "task"
   }
 }

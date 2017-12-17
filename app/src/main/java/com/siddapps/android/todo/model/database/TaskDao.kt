@@ -15,7 +15,7 @@ interface TaskDao {
     fun InsertTask(task: Task)
 
     @Update
-    fun updateTasks(onConflict: Int = OnConflictStrategy.REPLACE)
+    fun updateTask(task: Task)
 
     @Delete
     fun deleteTask(task: Task)

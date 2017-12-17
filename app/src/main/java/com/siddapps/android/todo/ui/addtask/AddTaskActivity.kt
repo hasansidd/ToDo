@@ -8,17 +8,19 @@ import android.util.Log
 import android.view.*
 import com.siddapps.android.todo.R
 import com.siddapps.android.todo.R.id.task_description
+import com.siddapps.android.todo.application.TaskApplication
 import kotlinx.android.synthetic.main.activity_add_task.*
 import java.util.*
+import javax.inject.Inject
 
 class AddTaskActivity : AppCompatActivity(), AddTaskView {
     var TAG = "AddTaskActivity"
-    private val presenter: AddTaskPresenter = AddTaskPresenterImpl()
+
+    @Inject
+    lateinit var presenter: AddTaskPresenter
 
     companion object {
-
         fun newIntent(context: Context) = Intent(context, AddTaskActivity::class.java)
-
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_add_task, menu)
@@ -28,7 +30,7 @@ class AddTaskActivity : AppCompatActivity(), AddTaskView {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.save_task -> {
-                presenter.saveTask(description = task_description.text.toString(), date = 0, isComplete = false)
+                presenter.saveTask(description = task_description.text.toString(), date = Date(), isComplete = false)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -37,6 +39,7 @@ class AddTaskActivity : AppCompatActivity(), AddTaskView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
+        (application as TaskApplication).taskComponent.inject(this)
         presenter.setView(this)
     }
 

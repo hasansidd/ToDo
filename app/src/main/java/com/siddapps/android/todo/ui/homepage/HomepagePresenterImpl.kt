@@ -11,8 +11,9 @@ class HomepagePresenterImpl : HomepagePresenter {
     }
 
     override fun getTasks() {
-        var tasks : MutableList<Task> = mutableListOf<Task>()
-        tasks.add(Task(0, "Take trash out", Calendar.getInstance().time, false))
+        var tasks: MutableList<Task> = mutableListOf<Task>()
+        tasks.add(Task(0, "Take trash out", Date(), false))
+        tasks.add(Task(1, "Eat food", Date(), true))
 
         homepageView.displayTasks(tasks)
     }
