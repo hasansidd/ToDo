@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.*
 import com.siddapps.android.todo.R
+import com.siddapps.android.todo.R.id.task_description
 import kotlinx.android.synthetic.main.activity_add_task.*
 import java.util.*
 
@@ -27,8 +28,7 @@ class AddTaskActivity : AppCompatActivity(), AddTaskView {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.save_task -> {
-                presenter.saveTask(description = task_description.toString(), date = Date(), isComplete = false)
-                finish()
+                presenter.saveTask(description = task_description.text.toString(), date = 0, isComplete = false)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -37,9 +37,11 @@ class AddTaskActivity : AppCompatActivity(), AddTaskView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
-
         presenter.setView(this)
+    }
 
+    override fun finishActivity() {
+        finish()
     }
 
 }

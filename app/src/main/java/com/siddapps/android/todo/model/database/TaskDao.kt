@@ -1,6 +1,7 @@
-package com.siddapps.android.todo.model
+package com.siddapps.android.todo.model.database
 
 import android.arch.persistence.room.*
+import com.siddapps.android.todo.model.Task
 
 @Dao
 interface TaskDao {
