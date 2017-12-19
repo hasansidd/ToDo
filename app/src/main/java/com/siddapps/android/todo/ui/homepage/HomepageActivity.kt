@@ -1,7 +1,6 @@
 package com.siddapps.android.todo.ui.homepage
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -12,7 +11,6 @@ import com.siddapps.android.todo.model.Task
 import com.siddapps.android.todo.ui.addtask.AddTaskActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
-
 
 class HomepageActivity : AppCompatActivity(), HomepageView {
     private val TAG = "HomepageActivity"
