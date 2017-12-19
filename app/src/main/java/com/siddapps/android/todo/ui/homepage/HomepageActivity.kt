@@ -47,10 +47,14 @@ class HomepageActivity : AppCompatActivity(), HomepageView {
         task_list_rv.layoutManager = LinearLayoutManager(this)
 
         presenter.setView(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
         presenter.getTasks()
     }
 
-    override fun displayTasks(tasks: MutableList<Task>) {
+    override fun displayTasks(tasks: List<Task>) {
         task_list_rv.adapter = TaskAdapter(this, tasks)
     }
 

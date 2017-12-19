@@ -11,7 +11,7 @@ import com.siddapps.android.todo.R
 import com.siddapps.android.todo.model.Task
 import com.siddapps.android.todo.utils.ToDoUtils
 
-class TaskAdapter(private val context: Context, private val tasks: MutableList<Task>) : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
+class TaskAdapter(private val context: Context, private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) =
             TaskHolder(LayoutInflater.from(context).inflate(R.layout.item_task_list, parent, false))
 

@@ -2,10 +2,11 @@ package com.siddapps.android.todo.model.repository
 
 import com.siddapps.android.todo.model.Task
 import com.siddapps.android.todo.model.database.TaskDao
+import javax.inject.Inject
 
-class TaskDataSource(val taskDao: TaskDao) :TaskRepository {
+class TaskDataSource @Inject constructor(private val taskDao: TaskDao) : TaskRepository {
 
-    override fun getAllTask()= taskDao.getAllTasks()
+    override fun getAllTask() = taskDao.getAllTasks()
 
     override fun getTaskById(id: Int) = taskDao.getTaskById(id)
 

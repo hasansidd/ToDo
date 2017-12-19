@@ -23,6 +23,9 @@
         <activity
             android:name=".ui.addtask.AddTaskActivity"/>
 
+        <activity
+            android:name=".ui.taskdetail.TaskDetailActivity"/>
+
     </application>
 
 </manifest>

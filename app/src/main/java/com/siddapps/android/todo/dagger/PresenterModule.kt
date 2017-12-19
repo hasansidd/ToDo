@@ -1,9 +1,13 @@
 package com.siddapps.android.todo.dagger
 
+import com.siddapps.android.todo.model.repository.TaskDataSource
+import com.siddapps.android.todo.model.repository.TaskRepository
 import com.siddapps.android.todo.ui.addtask.AddTaskPresenter
 import com.siddapps.android.todo.ui.addtask.AddTaskPresenterImpl
 import com.siddapps.android.todo.ui.homepage.HomepagePresenter
 import com.siddapps.android.todo.ui.homepage.HomepagePresenterImpl
+import com.siddapps.android.todo.ui.taskdetail.TaskDetailPresenter
+import com.siddapps.android.todo.ui.taskdetail.TaskDetailPresenterImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,9 +16,13 @@ import javax.inject.Singleton
 class PresenterModule {
     @Provides
     @Singleton
-    fun provideHomepagePresenter(): HomepagePresenter = HomepagePresenterImpl()
+    fun provideHomepagePresenter(taskRepository: TaskRepository): HomepagePresenter = HomepagePresenterImpl(taskRepository)
 
     @Provides
     @Singleton
-    fun provideAddTaskPresenter():AddTaskPresenter = AddTaskPresenterImpl()
+    fun provideAddTaskPresenter(taskRepository: TaskRepository): AddTaskPresenter = AddTaskPresenterImpl(taskRepository)
+
+    @Provides
+    @Singleton
+    fun provideTaskDetailPresenter(taskRepository: TaskRepository): TaskDetailPresenter = TaskDetailPresenterImpl(taskRepository)
 }
