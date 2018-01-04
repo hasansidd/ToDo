@@ -7,8 +7,8 @@ import android.util.Log
 import android.view.*
 import com.siddapps.android.todo.R
 import com.siddapps.android.todo.application.TaskApplication
-import com.siddapps.android.todo.model.Task
 import com.siddapps.android.todo.ui.addtask.AddTaskActivity
+import com.siddapps.android.todo.ui.homepage.taskadapter.TaskAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -49,11 +49,11 @@ class HomepageActivity : AppCompatActivity(), HomepageView {
 
     override fun onResume() {
         super.onResume()
-        presenter.getTasks()
+        displayTasks()
     }
 
-    override fun displayTasks(tasks: List<Task>) {
-        task_list_rv.adapter = TaskAdapter(this, tasks)
+    override fun displayTasks() {
+        task_list_rv.adapter = TaskAdapter(this)
     }
 
 

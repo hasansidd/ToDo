@@ -6,6 +6,8 @@ import com.siddapps.android.todo.ui.addtask.AddTaskPresenter
 import com.siddapps.android.todo.ui.addtask.AddTaskPresenterImpl
 import com.siddapps.android.todo.ui.homepage.HomepagePresenter
 import com.siddapps.android.todo.ui.homepage.HomepagePresenterImpl
+import com.siddapps.android.todo.ui.homepage.taskadapter.TaskAdapterPresenter
+import com.siddapps.android.todo.ui.homepage.taskadapter.TaskAdapterPresenterImpl
 import com.siddapps.android.todo.ui.taskdetail.TaskDetailPresenter
 import com.siddapps.android.todo.ui.taskdetail.TaskDetailPresenterImpl
 import dagger.Module
@@ -25,4 +27,8 @@ class PresenterModule {
     @Provides
     @Singleton
     fun provideTaskDetailPresenter(taskRepository: TaskRepository): TaskDetailPresenter = TaskDetailPresenterImpl(taskRepository)
+
+    @Provides
+    @Singleton
+    fun provideTaskAdapterPresenter(taskRepository: TaskRepository) : TaskAdapterPresenter = TaskAdapterPresenterImpl(taskRepository)
 }

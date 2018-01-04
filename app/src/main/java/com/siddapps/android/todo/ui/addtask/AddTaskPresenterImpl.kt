@@ -1,5 +1,6 @@
 package com.siddapps.android.todo.ui.addtask
 
+import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.widget.Toast
 import com.siddapps.android.todo.model.Task
@@ -11,7 +12,7 @@ import javax.inject.Inject
 class AddTaskPresenterImpl @Inject constructor(private val taskRepository: TaskRepository) : AddTaskPresenter {
     private val TAG = "AddTaskPresenterImpl"
     private lateinit var addTaskView: AddTaskView
-    @Inject
+    private lateinit var date:Date
 
     override fun setView(addTaskView: AddTaskView) {
         this.addTaskView = addTaskView

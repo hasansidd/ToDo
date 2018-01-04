@@ -17,7 +17,10 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideTaskDb(context: Context): TaskDatabase {
-        return Room.databaseBuilder(context, TaskDatabase::class.java, Const.DATABASE_NAME).allowMainThreadQueries().build()
+        return Room.databaseBuilder(context, TaskDatabase::class.java, Const.DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build()
     }
 
     @Provides

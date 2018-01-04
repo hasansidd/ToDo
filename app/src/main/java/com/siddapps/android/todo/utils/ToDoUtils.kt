@@ -1,13 +1,14 @@
 package com.siddapps.android.todo.utils
 
-import java.text.SimpleDateFormat
+import android.text.format.DateUtils
 import java.util.*
 
 class ToDoUtils {
     companion object {
         fun formatDate(date: Date): String {
-            val sdf = SimpleDateFormat("EEEE hh:mm a")
-            return sdf.format(date)
+            val timeInMillis:Long = date.time
+            val formattedDate:CharSequence = DateUtils.getRelativeTimeSpanString(timeInMillis, Calendar.getInstance().timeInMillis, DateUtils.DAY_IN_MILLIS)
+            return formattedDate.toString()
         }
     }
 }
