@@ -21,10 +21,12 @@
 
 
         <activity
-            android:name=".ui.addtask.AddTaskActivity"/>
+            android:name=".ui.addtask.AddTaskActivity"
+            android:parentActivityName=".ui.homepage.HomepageActivity"/>
 
         <activity
-            android:name=".ui.taskdetail.TaskDetailActivity"/>
+            android:name=".ui.taskdetail.TaskDetailActivity"
+            android:parentActivityName=".ui.homepage.HomepageActivity"/>
 
     </application>
 

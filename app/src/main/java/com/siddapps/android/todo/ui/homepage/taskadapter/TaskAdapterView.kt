@@ -12,4 +12,6 @@ interface TaskAdapterView {
     fun setPriority(isPriority:Boolean)
 
     fun navigateToTaskDetailActivity(task: Task)
+
+    fun setClickListener(recyclerViewClickListener: RecyclerViewClickListener)
 }

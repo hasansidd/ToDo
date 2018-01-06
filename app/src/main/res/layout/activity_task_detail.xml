@@ -7,58 +7,68 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/task_description"
+        android:id="@+id/detail_task_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:textSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/title_due_date"
+        app:layout_constraintTop_toBottomOf="parent"
         tools:text="Description of Task"/>
 
     <TextView
-        android:id="@+id/task_date"
+        android:id="@+id/title_due_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:textSize="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_description"
+        android:text="Due Date"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_task_description"/>
+
+    <TextView
+        android:id="@+id/detail_task_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@id/title_due_date"
+        app:layout_constraintTop_toBottomOf="@+id/detail_task_description"
         tools:text="15 days left"/>
 
     <ImageView
-        android:id="@+id/task_is_complete"
+        android:id="@+id/detail_task_is_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:src="@android:drawable/star_on"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_description"/>
+        app:layout_constraintTop_toBottomOf="@+id/detail_task_description"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/notes"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_date"/>
+        app:layout_constraintTop_toBottomOf="@id/title_due_date"/>
 
     <EditText
-        android:id="@+id/task_notes"
+        android:id="@+id/detail_task_notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:minLines="6"
         android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/title_notes"
         tools:text="@string/lorem"/>
 </android.support.constraint.ConstraintLayout>

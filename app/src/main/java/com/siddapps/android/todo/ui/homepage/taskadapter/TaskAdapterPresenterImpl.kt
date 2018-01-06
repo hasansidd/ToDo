@@ -1,6 +1,6 @@
 package com.siddapps.android.todo.ui.homepage.taskadapter
 
-import com.siddapps.android.todo.model.Task
+import android.util.Log
 import com.siddapps.android.todo.model.repository.TaskRepository
 import javax.inject.Inject
 
@@ -14,7 +14,8 @@ class TaskAdapterPresenterImpl @Inject constructor(private val taskRepository: T
     override fun getTasks() =
             taskRepository.getAllTask()
 
-    override fun deleteTask(task: Task) {
+    override fun deleteTask(adapterPosition: Int) {
+        val task = getTasks()[adapterPosition]
         taskRepository.deleteTask(task)
     }
 
@@ -23,9 +24,10 @@ class TaskAdapterPresenterImpl @Inject constructor(private val taskRepository: T
 
     override fun onBindViewHolder(position: Int, taskAdapterView: TaskAdapterView) {
         val task = getTasks()[position]
+        Log.e("Task", task.toString())
         taskAdapterView.setTitle(task.description)
         taskAdapterView.setDate(task.date)
-        taskAdapterView.setPriority(task.priority)
+        taskAdapterView.setPriority(task.isPriority)
     }
 
     override fun onItemClick(adapterPosition: Int) {

@@ -4,4 +4,6 @@ import com.siddapps.android.todo.model.Task
 
 interface TaskDetailView {
     fun showTask(task: Task)
+
+    fun finishActivity()
 }

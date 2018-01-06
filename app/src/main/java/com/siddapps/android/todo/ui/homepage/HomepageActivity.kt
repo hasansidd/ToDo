@@ -9,6 +9,7 @@ import com.siddapps.android.todo.R
 import com.siddapps.android.todo.application.TaskApplication
 import com.siddapps.android.todo.ui.addtask.AddTaskActivity
 import com.siddapps.android.todo.ui.homepage.taskadapter.TaskAdapter
+import com.siddapps.android.todo.ui.homepage.taskadapter.TaskAdapterPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -17,6 +18,9 @@ class HomepageActivity : AppCompatActivity(), HomepageView {
 
     @Inject
     lateinit var presenter: HomepagePresenter
+
+    @Inject
+    lateinit var adapterPresenter: TaskAdapterPresenter
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -53,7 +57,7 @@ class HomepageActivity : AppCompatActivity(), HomepageView {
     }
 
     override fun displayTasks() {
-        task_list_rv.adapter = TaskAdapter(this)
+        task_list_rv.adapter = TaskAdapter(this, adapterPresenter)
     }
 
 

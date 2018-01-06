@@ -12,14 +12,21 @@ import javax.inject.Inject
 class AddTaskPresenterImpl @Inject constructor(private val taskRepository: TaskRepository) : AddTaskPresenter {
     private val TAG = "AddTaskPresenterImpl"
     private lateinit var addTaskView: AddTaskView
-    private lateinit var date:Date
+    private lateinit var date: Date
 
     override fun setView(addTaskView: AddTaskView) {
         this.addTaskView = addTaskView
     }
 
-    override fun saveTask(id: Int, description: String, date: Date, isComplete: Boolean) {
-        val task = Task(id, description, date, isComplete)
+    override fun saveTask(id: Int, description: String, date: Date, isPriority: Boolean, isComplete: Boolean, notes: String) {
+        val task = Task(
+                id = id,
+                description = description,
+                date = date,
+                isPriority = isPriority,
+                isComplete = isComplete,
+                notes = notes
+        )
         //add task to db
         taskRepository.insertTask(task)
         Log.e(TAG, task.toString())

@@ -8,7 +8,7 @@ interface TaskAdapterPresenter {
 
     fun getTasks(): List<Task>
 
-    fun deleteTask(task: Task)
+    fun deleteTask(task: Int)
 
     fun getTaskItemCount(): Int
 

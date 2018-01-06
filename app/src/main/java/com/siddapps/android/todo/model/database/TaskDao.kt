@@ -5,7 +5,7 @@ import com.siddapps.android.todo.model.Task
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM tasks ORDER BY date" )
+    @Query("SELECT * FROM tasks ORDER BY isPriority DESC, date ASC" )
     fun getAllTasks(): List<Task>
 
     @Query("SELECT * FROM tasks WHERE id IS :id")

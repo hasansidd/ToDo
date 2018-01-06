@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.format.DateUtils
 import android.text.format.DateUtils.DAY_IN_MILLIS
 import android.view.*
+import android.widget.CompoundButton
 import android.widget.DatePicker
 import com.siddapps.android.todo.R
 import com.siddapps.android.todo.application.TaskApplication
@@ -35,7 +36,13 @@ class AddTaskActivity : AppCompatActivity(), AddTaskView, DatePickerDialog.OnDat
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.save_task -> {
-                presenter.saveTask(description = task_description.text.toString(), date = date,  isComplete = false)
+                presenter.saveTask(
+                        description = task_description.text.toString(),
+                        date = date,
+                        isPriority = task_priority.isChecked,
+                        isComplete = false,
+                        notes = task_notes.text.toString()
+                        )
             }
         }
         return super.onOptionsItemSelected(item)
@@ -46,6 +53,7 @@ class AddTaskActivity : AppCompatActivity(), AddTaskView, DatePickerDialog.OnDat
         setContentView(R.layout.activity_add_task)
         (application as TaskApplication).taskComponent.inject(this)
         presenter.setView(this)
+
         due_date_date.setOnClickListener({
             val fm = supportFragmentManager
             val datePickerFragment = DatePickerFragment()

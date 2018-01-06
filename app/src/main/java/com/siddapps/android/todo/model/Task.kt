@@ -9,13 +9,15 @@ data class Task(@PrimaryKey(autoGenerate = true) val id: Int,
                 var description: String,
                 var date: Date,
                 var isComplete: Boolean = false,
-                var priority: Boolean = false) {
-
+                var isPriority: Boolean = false,
+                var notes: String) {
 
     override fun toString(): String {
-        return (id.toString() + " " +
-                description + " " +
-                date + " " +
-                isComplete)
+        return ("ID: " + id.toString() + "\n" +
+                "Title: " + description + "\n" +
+                "Date: " + date + "\n" +
+                "Priority: " + isPriority + "\n" +
+                "Complete: " + isComplete + "\n" +
+                "notes: " + notes)
     }
 }

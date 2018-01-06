@@ -6,13 +6,25 @@ import javax.inject.Inject
 
 class TaskDetailPresenterImpl @Inject constructor(private val taskRepository: TaskRepository) : TaskDetailPresenter {
     private lateinit var taskDetailView: TaskDetailView
+    private lateinit var task: Task
 
     override fun setView(taskDetailView: TaskDetailView) {
         this.taskDetailView = taskDetailView
     }
 
     override fun loadTask(id: Int) {
-        val task = taskRepository.getTaskById(id)
+        task = taskRepository.getTaskById(id)
         taskDetailView.showTask(task)
+    }
+
+    override fun saveTask(notes: String) {
+        task.notes = notes
+        taskRepository.updateTask(task)
+        taskDetailView.finishActivity()
+    }
+
+    override fun deleteTask() {
+        taskRepository.deleteTask(task)
+        taskDetailView.finishActivity()
     }
 }

@@ -5,6 +5,7 @@ import com.siddapps.android.todo.model.repository.TaskRepository
 import com.siddapps.android.todo.ui.addtask.AddTaskActivity
 import com.siddapps.android.todo.ui.addtask.AddTaskPresenter
 import com.siddapps.android.todo.ui.homepage.HomepageActivity
+import com.siddapps.android.todo.ui.homepage.taskadapter.TaskAdapter
 import com.siddapps.android.todo.ui.taskdetail.TaskDetailActivity
 import dagger.Component
 import javax.inject.Singleton
