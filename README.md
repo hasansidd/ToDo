@@ -10,8 +10,6 @@ Introduction
 
 - Add notes to each task
 
-- Recieve weather notification on a per city basis
-
 Uses: 
 --------------
 - [Room DB](https://developer.android.com/topic/libraries/architecture/room.html)
